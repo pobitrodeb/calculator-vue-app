@@ -17,14 +17,14 @@
       <th scope="col" v-on:click="clearFiled">C</th>
       <th scope="col" v-on:click="setNegativeOrPositive"><i class="fa-solid fa-plus"></i> <i class="fa-solid fa-percent"></i> <i class="fa-solid fa-minus"></i></th>
       <th scope="col" v-on:click="calculatePercentage"><i class="fa-solid fa-percent"></i></th>
-      <th scope="col"  class="bg-primary text-white"> <div class="btn "><i class="fa-solid fa-divide"></i></div> </th>
+      <th scope="col"  class="bg-primary text-white" @click="proecessOutput('divide')"> <div class="btn "><i class="fa-solid fa-divide"></i></div> </th>
     </tr>
 
     <tr>
       <td v-on:click="getNumber('7')">7</td>
       <td v-on:click="getNumber('8')">8</td>
       <td v-on:click="getNumber('9')">9</td>
-      <td class="bg-primary text-white"><div class="btn"> <i class="fa-solid fa-x"></i> </div></td>
+      <td class="bg-primary text-white" @click="proecessOutput('multiply')"><div class="btn"> <i class="fa-solid fa-x"></i> </div></td>
       
     </tr>
 
@@ -32,14 +32,14 @@
       <td v-on:click="getNumber('4')">4</td>
       <td v-on:click="getNumber('5')">5</td>
       <td v-on:click="getNumber('6')">6</td>
-      <td class="bg-primary text-white"> <div class="btn"><i class="fa-solid fa-minus"></i></div> </td>
+      <td class="bg-primary text-white" @click="proecessOutput('subtract')"> <div class="btn"><i class="fa-solid fa-minus"></i></div> </td>
     </tr>
 
     <tr>
       <td v-on:click="getNumber('1')">1</td>
       <td v-on:click="getNumber('2')">2</td>
       <td v-on:click="getNumber('3')">3</td>
-      <td class="bg-primary text-white" @click="proecessOutput"> <div class="btn"><i class="fa-solid fa-plus"></i></div> </td>
+      <td class="bg-primary text-white" @click="proecessOutput('add')"> <div class="btn"><i class="fa-solid fa-plus"></i></div> </td>
     </tr>
 
     <tr>
@@ -62,7 +62,7 @@ export default {
   data(){
     return {
       output : '', 
-      previousVlaue: '',
+      previousVlaue: null,
       operationFired: false,
     }
   }, 
@@ -90,15 +90,32 @@ export default {
         this.output = this.output + '.';
       }
     },
-    proecessOutput(){
-      this.operation = (a, b) => {
+    proecessOutput(string){
+
+      if(string === 'add'){
+        this.operation = (a, b) => {
           return parseFloat(a) + parseFloat(b) ; 
+        }
+      }else if(string == 'subtract'){
+        this.operation = (a, b) => {
+          return parseFloat(a) - parseFloat(b) ; 
+        }
+      }else if(string === 'multiply'){
+        this.operation = (a, b) => {
+          return parseFloat(a) * parseFloat(b) ; 
+        }
+      }else if(string == 'divide'){
+        this.operation = (a, b) => {
+          return parseFloat(a) / parseFloat(b) ; 
+        }
       }
+     
       this.previousVlaue = this.output;
       this.operationFired = true;
     },
     result(){
       this.output = `${this.operation(this.previousVlaue, this.output)}`;
+      this.previousVlaue = null; 
     }
   }
 }
