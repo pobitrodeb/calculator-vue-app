@@ -6,13 +6,15 @@
     <table class="table table-bordered">
   <thead >
     <tr class="bg-primary text-white py-3">
-      <th colspan="4">Codition and Result </th>
+      <th colspan="4">
+        {{  output || 0  }}
+      </th>
     </tr>
   </thead>
   <tbody>
 
     <tr>
-      <th scope="col">C</th>
+      <th scope="col" v-on:click="clearFiled">C</th>
       <th scope="col"><i class="fa-solid fa-plus"></i>/-</th>
       <th scope="col"><i class="fa-solid fa-percent"></i></th>
       <th scope="col"  class="bg-primary text-white"> <div class="btn "><i class="fa-solid fa-divide"></i></div> </th>
@@ -56,6 +58,16 @@ export default {
   name: 'HelloWorld',
   props: {
     msg: String
+  }, 
+  data(){
+    return {
+      output : '123'
+    }
+  }, 
+  methods:{
+    clearFiled(){
+      this.output = '';
+    }
   }
 }
 </script>
