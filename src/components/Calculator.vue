@@ -21,29 +21,29 @@
     </tr>
 
     <tr>
-      <td>7</td>
-      <td>8</td>
-      <td>9</td>
+      <td v-on:click="getNumber('7')">7</td>
+      <td v-on:click="getNumber('8')">8</td>
+      <td v-on:click="getNumber('9')">9</td>
       <td class="bg-primary text-white"><div class="btn"> <i class="fa-solid fa-x"></i> </div></td>
       
     </tr>
 
     <tr>
-      <td>4</td>
-      <td>5</td>
-      <td>6</td>
+      <td v-on:click="getNumber('4')">4</td>
+      <td v-on:click="getNumber('5')">5</td>
+      <td v-on:click="getNumber('6')">6</td>
       <td class="bg-primary text-white"> <div class="btn"><i class="fa-solid fa-minus"></i></div> </td>
     </tr>
 
     <tr>
-      <td>1</td>
-      <td>2</td>
-      <td>3</td>
+      <td v-on:click="getNumber('1')">1</td>
+      <td v-on:click="getNumber('2')">2</td>
+      <td v-on:click="getNumber('3')">3</td>
       <td class="bg-primary text-white" > <div class="btn"><i class="fa-solid fa-plus"></i></div> </td>
     </tr>
 
     <tr>
-      <td colspan="2">0</td>
+      <td colspan="2" v-on:click="getNumber('0')">0</td>
       <td><i class="fa-solid fa-circle-dot"></i></td>
       <td class="bg-primary text-white" > <div class="btn">  <i class="fa-solid fa-equals"></i></div> </td>
     </tr>
@@ -73,7 +73,12 @@ export default {
     }, 
     calculatePercentage(){
         this.output = parseFloat(this.output)/100
-    }
+    }, 
+    getNumber(number){
+      this.output = `${this.output}${number}`;
+      // console.log(this.output);
+    }, 
+
   }
 }
 </script>
