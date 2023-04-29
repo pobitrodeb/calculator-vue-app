@@ -39,13 +39,13 @@
       <td v-on:click="getNumber('1')">1</td>
       <td v-on:click="getNumber('2')">2</td>
       <td v-on:click="getNumber('3')">3</td>
-      <td class="bg-primary text-white" > <div class="btn"><i class="fa-solid fa-plus"></i></div> </td>
+      <td class="bg-primary text-white" @click="proecessOutput"> <div class="btn"><i class="fa-solid fa-plus"></i></div> </td>
     </tr>
 
     <tr>
       <td colspan="2" v-on:click="getNumber('0')">0</td>
       <td v-on:click="getDot()"><i class="fa-solid fa-circle-dot"></i></td>
-      <td class="bg-primary text-white" > <div class="btn">  <i class="fa-solid fa-equals"></i></div> </td>
+      <td class="bg-primary text-white" @click="result()"> <div class="btn">  <i class="fa-solid fa-equals"></i></div> </td>
     </tr>
 
   </tbody>
@@ -61,7 +61,9 @@ export default {
   }, 
   data(){
     return {
-      output : ''
+      output : '', 
+      previousVlaue: '',
+      operationFired: false,
     }
   }, 
   methods:{
@@ -75,6 +77,11 @@ export default {
         this.output = parseFloat(this.output)/100
     }, 
     getNumber(number){
+      if(this.operationFired){
+        this.output = '';
+        this.operationFired = false
+      }
+
       this.output = `${this.output}${number}`;
       // console.log(this.output);
     }, 
@@ -83,6 +90,16 @@ export default {
         this.output = this.output + '.';
       }
     },
+    proecessOutput(){
+      this.operation = (a, b) => {
+          return parseFloat(a) + parseFloat(b) ; 
+      }
+      this.previousVlaue = this.output;
+      this.operationFired = true;
+    },
+    result(){
+      this.output = `${this.operation(this.previousVlaue, this.output)}`;
+    }
   }
 }
 </script>
