@@ -1,7 +1,11 @@
 <template>
-  <div class="hello">
-  {{ msg }}
-  </div>
+
+<div class="m-5">
+  <h3 class="text-primary">Calculator App With Vue.js</h3>
+</div>
+
+<div class="row">
+  <div class="col-md-3"></div>
   <div class="col-md-6">
     <table class="table table-bordered">
   <thead >
@@ -15,7 +19,7 @@
 
     <tr>
       <th scope="col" v-on:click="clearFiled">C</th>
-      <th scope="col" v-on:click="setNegativeOrPositive"><i class="fa-solid fa-plus"></i> <i class="fa-solid fa-percent"></i> <i class="fa-solid fa-minus"></i></th>
+      <th scope="col" v-on:click="setNegativeOrPositive"><i class="fa-solid fa-plus"></i> / <i class="fa-solid fa-minus"></i></th>
       <th scope="col" v-on:click="calculatePercentage"><i class="fa-solid fa-percent"></i></th>
       <th scope="col"  class="bg-primary text-white" @click="proecessOutput('divide')"> <div class="btn "><i class="fa-solid fa-divide"></i></div> </th>
     </tr>
@@ -47,10 +51,13 @@
       <td v-on:click="getDot()"><i class="fa-solid fa-circle-dot"></i></td>
       <td class="bg-primary text-white" @click="result()"> <div class="btn">  <i class="fa-solid fa-equals"></i></div> </td>
     </tr>
-
   </tbody>
 </table>
+<h3 class="text-primary"> www.pobitrodeb.com </h3>
   </div>
+  <div class="col-md-3"></div>
+</div>
+
 </template>
 
 <script>
