@@ -44,7 +44,7 @@
 
     <tr>
       <td colspan="2" v-on:click="getNumber('0')">0</td>
-      <td><i class="fa-solid fa-circle-dot"></i></td>
+      <td v-on:click="getDot()"><i class="fa-solid fa-circle-dot"></i></td>
       <td class="bg-primary text-white" > <div class="btn">  <i class="fa-solid fa-equals"></i></div> </td>
     </tr>
 
@@ -61,7 +61,7 @@ export default {
   }, 
   data(){
     return {
-      output : '12'
+      output : ''
     }
   }, 
   methods:{
@@ -78,7 +78,11 @@ export default {
       this.output = `${this.output}${number}`;
       // console.log(this.output);
     }, 
-
+    getDot(){
+      if(this.output.indexOf('.') === -1){
+        this.output = this.output + '.';
+      }
+    },
   }
 }
 </script>
