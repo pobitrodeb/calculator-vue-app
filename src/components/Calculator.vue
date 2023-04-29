@@ -1,6 +1,6 @@
 <template>
 
-<div class="m-5">
+<div class="m-2">
   <h3 class="text-primary">Calculator App With Vue.js</h3>
 </div>
 
