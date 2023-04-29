@@ -15,7 +15,7 @@
 
     <tr>
       <th scope="col" v-on:click="clearFiled">C</th>
-      <th scope="col"><i class="fa-solid fa-plus"></i>/-</th>
+      <th scope="col" v-on:click="setNegativeOrPositive"><i class="fa-solid fa-plus"></i> <i class="fa-solid fa-percent"></i> <i class="fa-solid fa-minus"></i></th>
       <th scope="col"><i class="fa-solid fa-percent"></i></th>
       <th scope="col"  class="bg-primary text-white"> <div class="btn "><i class="fa-solid fa-divide"></i></div> </th>
     </tr>
@@ -67,6 +67,9 @@ export default {
   methods:{
     clearFiled(){
       this.output = '';
+    }, 
+    setNegativeOrPositive(){
+        this.output = this.output[0] === '-' ? this.output.slice(1) : `-${this.output}`
     }
   }
 }
