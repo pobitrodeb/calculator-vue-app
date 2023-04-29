@@ -16,7 +16,7 @@
     <tr>
       <th scope="col" v-on:click="clearFiled">C</th>
       <th scope="col" v-on:click="setNegativeOrPositive"><i class="fa-solid fa-plus"></i> <i class="fa-solid fa-percent"></i> <i class="fa-solid fa-minus"></i></th>
-      <th scope="col"><i class="fa-solid fa-percent"></i></th>
+      <th scope="col" v-on:click="calculatePercentage"><i class="fa-solid fa-percent"></i></th>
       <th scope="col"  class="bg-primary text-white"> <div class="btn "><i class="fa-solid fa-divide"></i></div> </th>
     </tr>
 
@@ -61,7 +61,7 @@ export default {
   }, 
   data(){
     return {
-      output : '123'
+      output : '12'
     }
   }, 
   methods:{
@@ -70,6 +70,9 @@ export default {
     }, 
     setNegativeOrPositive(){
         this.output = this.output[0] === '-' ? this.output.slice(1) : `-${this.output}`
+    }, 
+    calculatePercentage(){
+        this.output = parseFloat(this.output)/100
     }
   }
 }
